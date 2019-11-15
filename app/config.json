@@ -1,0 +1,146 @@
+{
+  "defaultExtraInfo": {
+    "appId": "******",
+    "appName": "7C",
+    "appLabel": "南宫",
+    "appID": "com.app.nangang",
+    "appIcon": "@mipmap/ic_launcher",
+    "roundIcon": "@mipmap/ic_launcher_round"
+  },
+  "channelInfoList": [
+    {
+      "appLabel": "南宫",
+      "appID": "com.app.nangang",
+      "appIcon": "@mipmap/ic_launcher",
+      "roundIcon": "@mipmap/ic_launcher_round",
+      "channel": "xy_148424",
+      "alias": "android_xy_148424",
+      "extraInfo": {
+        "appId": "148424",
+        "appName": "7C"
+      }
+    },
+    {
+      "appLabel": "南宫1",
+      "appID": "com.app.nangang1",
+      "appIcon": "@mipmap/ic_launcher",
+      "roundIcon": "@mipmap/ic_launcher_round",
+      "channel": "xy_148426",
+      "alias": "android_xy_148426",
+      "extraInfo": {
+        "appId": "148426",
+        "appName": "7C"
+      }
+    },
+    {
+      "appLabel": "南宫2",
+      "appID": "com.app.nangang2",
+      "appIcon": "@mipmap/ic_launcher",
+      "roundIcon": "@mipmap/ic_launcher_round",
+      "channel": "xy_148427",
+      "alias": "android_xy_148427",
+      "extraInfo": {
+        "appId": "148427",
+        "appName": "7C"
+      }
+    },
+    {
+      "appLabel": "南宫3",
+      "appID": "com.app.nangang3",
+      "appIcon": "@mipmap/ic_launcher",
+      "roundIcon": "@mipmap/ic_launcher_round",
+      "channel": "xy_148428",
+      "alias": "android_xy_148428",
+      "extraInfo": {
+        "appId": "148428",
+        "appName": "7C"
+      }
+    },
+    {
+      "appLabel": "南宫4",
+      "appID": "com.app.nangang4",
+      "appIcon": "@mipmap/ic_launcher",
+      "roundIcon": "@mipmap/ic_launcher_round",
+      "channel": "xy_148429",
+      "alias": "android_xy_148429",
+      "extraInfo": {
+        "appId": "148429",
+        "appName": "7C"
+      }
+    },
+    {
+      "appLabel": "南宫5",
+      "appID": "com.app.nangang5",
+      "appIcon": "@mipmap/ic_launcher",
+      "roundIcon": "@mipmap/ic_launcher_round",
+      "channel": "xy_148430",
+      "alias": "android_xy_148430",
+      "extraInfo": {
+        "appId": "148430",
+        "appName": "7C"
+      }
+    },
+    {
+      "appLabel": "南宫6",
+      "appID": "com.app.nangang6",
+      "appIcon": "@mipmap/ic_launcher",
+      "roundIcon": "@mipmap/ic_launcher_round",
+      "channel": "xy_148430",
+      "alias": "android_xy_148430",
+      "extraInfo": {
+        "appId": "148430",
+        "appName": "7C"
+      }
+    },
+    {
+      "appLabel": "南宫7",
+      "appID": "com.app.nangang7",
+      "appIcon": "@mipmap/ic_launcher",
+      "roundIcon": "@mipmap/ic_launcher_round",
+      "channel": "xy_148431",
+      "alias": "android_xy_148431",
+      "extraInfo": {
+        "appId": "148432",
+        "appName": "7C"
+      }
+    },
+    {
+      "appLabel": "南宫8",
+      "appID": "com.app.nangang8",
+      "appIcon": "@mipmap/ic_launcher",
+      "roundIcon": "@mipmap/ic_launcher_round",
+      "channel": "xy_148433",
+      "alias": "android_xy_148433",
+      "extraInfo": {
+        "appId": "148433",
+        "appName": "7C"
+      }
+    },
+    {
+      "appLabel": "南宫9",
+      "appID": "com.app.nangang9",
+      "appIcon": "@mipmap/ic_launcher",
+      "roundIcon": "@mipmap/ic_launcher_round",
+      "channel": "xy_148434",
+      "alias": "android_xy_148434",
+      "extraInfo": {
+        "appId": "148434",
+        "appName": "7C"
+      }
+    },
+    {
+      "appLabel": "南宫0",
+      "appID": "com.app.nangang0",
+      "appIcon": "@mipmap/ic_launcher",
+      "roundIcon": "@mipmap/ic_launcher_round",
+      "channel": "xy_148435",
+      "alias": "android_xy_148435",
+      "extraInfo": {
+        "appId": "148435",
+        "appName": "7C"
+      }
+    }
+  ]
+}
+
+

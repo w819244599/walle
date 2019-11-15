@@ -1,0 +1,146 @@
+import com.android.build.gradle.api.BaseVariant
+
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'walle'
+apply from: rootProject.file('quality.gradle')
+
+
+buildscript {
+    repositories {
+        mavenLocal()
+        jcenter()
+        google()
+        maven { url 'https://jitpack.io' }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.2.0'
+        classpath "com.meituan.android.walle:plugin:latest.integration"
+    }
+}
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+    defaultConfig {
+        applicationId "com.example.walle"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        manifestPlaceholders = [
+                appIcon:"@mipmap/ic_launcher",
+                appRoundIcon:"@mipmap/ic_launcher_round",
+                AppLabel:"appa",
+        ]
+    }
+
+    splits {
+        abi {
+            enable true
+            reset()
+            include 'armeabi', 'x86'
+            universalApk false
+        }
+    }
+
+    signingConfigs {
+        sign {
+            storeFile file("keystore/sign-debug.keystore")
+            storePassword "1234567"
+            keyAlias "debug"
+            keyPassword "12345678"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.sign
+        }
+
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            signingConfig signingConfigs.sign
+
+            applicationIdSuffix 'debug'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+
+
+    productFlavors.all { flavor ->
+        flavor.manifestPlaceholders = [
+                appIcon:"@mipmap/ic_launcher",
+                appRoundIcon:"@mipmap/ic_launcher_round",
+                AppLabel:"appa",
+        ]
+    }
+
+//    productFlavors {
+//        applicationId walle.applicationId
+//    }
+}
+
+configurations.all {
+    resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.core:core-ktx:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    implementation project(':library')
+}
+
+/*
+
+ projectName - 项目名字
+ appName - App模块名字
+ packageName - applicationId (App包名packageName)
+ buildType - buildType (release/debug等)
+ channel - channel名称 (对应渠道打包中的渠道名字)
+ versionName - versionName (显示用的版本号)
+ versionCode - versionCode (内部版本号)
+ buildTime - buildTime (编译构建日期时间)
+ fileSHA1 - fileSHA1 (最终APK文件的SHA1哈希值)
+ flavorName - 编译构建 productFlavors 名
+*/
+walle {
+    apkOutputFolder = new File("${project.buildDir}/apk")
+    apkFileNameFormat = '${channel}-${buildType}-v${versionName}-${versionCode}-${buildTime}-${flavorName}.apk'
+    //configFile与channelFile两者必须存在一个，否则无法生成渠道包。两者都存在时优先执行configFile
+//    channelFile = new File("${project.getProjectDir()}/channel")
+    configFile = new File("${project.getProjectDir()}/config.json")
+
+}
+
+// 根据不同的applicationId来配置不同的channelFile／configFile
+afterEvaluate {
+    project.android.applicationVariants.all { BaseVariant variant ->
+        variant.assemble.doFirst {
+            if (variant.applicationId.endsWith(".debug")) {
+
+                project.walle.channelFile = new File("${project.getProjectDir()}/channel_debug")
+            }
+        }
+    }
+}
